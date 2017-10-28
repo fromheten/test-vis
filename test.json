@@ -12,6 +12,12 @@
     "description": "variable lookup works"
   },
   {
+    "expression": ["symbol?", ["quote", "I'm a symbol"]],
+    "expectation": "t",
+    "context": {},
+    "description": "Predicate for symbols"
+  },
+  {
     "expression": ["identity", ["quote", "a"]],
     "context": {
       "identity": ["lambda", ["x"], "x"]
@@ -104,11 +110,5 @@
     "expectation": "f",
     "context": {},
     "description": "Nopes ain't gonna happen"
-  },
-  {
-    "expression": ["symbol?", ["quote", "I'm a symbol"]],
-    "expectation": "t",
-    "context": {},
-    "description": "Predicate for symbols"
   }
 ]
