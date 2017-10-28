@@ -5,7 +5,8 @@
     "license": "GNU GPL v3",
     "scripts": {
         "start": "node ./src/plato-test.js",
-        "html": "node ./src/html-output.js > target/test-output.html"
+        "html": "node ./src/html-output.js > target/test-output.html",
+        "html-open": "yarn run html && open target/test-output.html"
     },
     "dependencies": {
         "ramda": "^0.25.0"

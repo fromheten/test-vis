@@ -4,5 +4,111 @@
     "expectation": "First test!",
     "description": "Plato will change the world - but don't quote me on that",
     "context": {}
+  },
+  {
+    "expectation": "b",
+    "context": { "a": "b" },
+    "expression": "a",
+    "description": "variable lookup works"
+  },
+  {
+    "expression": ["identity", ["quote", "a"]],
+    "context": {
+      "identity": ["lambda", ["x"], "x"]
+    },
+    "expectation": "a",
+    "description": "Context works"
+  },
+  {
+    "expression": [
+      ["lambda", ["x", "y"], ["cons", "x", "y"]],
+      ["quote", "a"],
+      ["quote", "b"]
+    ],
+    "expectation": ["a", "b"],
+    "context": {},
+    "description": "Multiple arguments"
+  },
+  {
+    "expression": [["lambda", ["x"], "x"], ["quote", "a"]],
+    "expectation": "a",
+    "context": {},
+    "description": "You must apply yourself to find your identity"
+  },
+  {
+    "expression": "t",
+    "expectation": "t",
+    "context": {},
+    "description": "t evals to itself"
+  },
+  {
+    "expression": "f",
+    "expectation": "f",
+    "context": {},
+    "description": "f evals to itself"
+  },
+  {
+    "expression": [
+      "if",
+      "f",
+      ["quote", "Not supposed to happen"],
+      ["quote", "Sad path is the true way"]
+    ],
+    "expectation": "Sad path is the true way",
+    "context": {},
+    "description": "No one speaks truth only"
+  },
+  {
+    "expression": [
+      "if",
+      ["head", ["tail", ["quote", ["f", "t"]]]],
+      ["quote", "I expect this"],
+      ["quote", "nej!"]
+    ],
+    "expectation": "I expect this",
+    "context": {},
+    "description": "Make sure the condition is evaluated"
+  },
+  {
+    "expression": ["if", "t", ["quote", "yes"], ["quote", "not gonna happen"]],
+    "expectation": "yes",
+    "context": {},
+    "description": "Take the happy path!"
+  },
+  {
+    "expression": ["cons", 1, ["quote", [2]]],
+    "expectation": [1, 2],
+    "context": {},
+    "description": "Better together"
+  },
+  {
+    "expression": ["tail", ["quote", ["a", "b", "c"]]],
+    "expectation": ["b", "c"],
+    "context": {},
+    "description": "Computing for the rest of us"
+  },
+  {
+    "expression": ["head", ["quote", "a"]],
+    "expectation": "a",
+    "context": {},
+    "description": "Baby you can drive my car"
+  },
+  {
+    "expression": ["equals", ["quote", "something"], ["quote", "something"]],
+    "expectation": "t",
+    "context": {},
+    "description": "Equality, liberty and brotherhood!"
+  },
+  {
+    "expression": ["equals", ["quote", "yeps"], ["quote", "nope"]],
+    "expectation": "f",
+    "context": {},
+    "description": "Nopes ain't gonna happen"
+  },
+  {
+    "expression": ["symbol?", ["quote", "I'm a symbol"]],
+    "expectation": "t",
+    "context": {},
+    "description": "Predicate for symbols"
   }
 ]
