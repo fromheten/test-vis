@@ -2,8 +2,7 @@
   {
     "expression": ["quote", "First test!"],
     "expectation": "First test!",
-    "description":
-      "Plato will change the world - but please don't quote me on that",
+    "description": "Plato will change the world - but don't quote me on that",
     "context": {}
   }
 ]

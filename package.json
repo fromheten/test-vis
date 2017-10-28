@@ -4,7 +4,8 @@
     "main": "index.js",
     "license": "GNU GPL v3",
     "scripts": {
-        "start": "node ./src/plato-test.js"
+        "start": "node ./src/plato-test.js",
+        "html": "node ./src/html-output.js > target/test-output.html"
     },
     "dependencies": {
         "ramda": "^0.25.0"
