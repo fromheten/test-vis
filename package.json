@@ -1,0 +1,12 @@
+{
+    "name": "test-vis",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "GNU GPL v3",
+    "scripts": {
+        "start": "node ./src/plato-test.js"
+    },
+    "dependencies": {
+        "ramda": "^0.25.0"
+    }
+}
