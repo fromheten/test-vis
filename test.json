@@ -47,7 +47,6 @@
     "context": {},
     "description": "rest, aka tail or cdr"
   },
-
   {
     "expression": ["cons", ["quote", "a"], ["quote", ["b"]]],
     "expectation": ["a", "b"],
@@ -55,12 +54,19 @@
     "description": "Better together"
   },
   {
-    "expression": [
-      "if",
-      ["first", ["rest", ["quote", ["f", "t"]]]],
-      ["quote", "I expect this"],
-      ["quote", "nej!"]
-    ],
+    "expression": "t",
+    "expectation": "t",
+    "context": {},
+    "description": "t evals to itself"
+  },
+  {
+    "expression": "f",
+    "expectation": "f",
+    "context": {},
+    "description": "f evals to itself"
+  },
+  {
+    "expression": ["if", "t", ["quote", "I expect this"], ["quote", "nej!"]],
     "expectation": "I expect this",
     "context": {},
     "description": "Make sure the condition is evaluated"
@@ -76,18 +82,7 @@
     "context": {},
     "description": "No one speaks truth only"
   },
-  {
-    "expression": "f",
-    "expectation": "f",
-    "context": {},
-    "description": "f evals to itself"
-  },
-  {
-    "expression": "t",
-    "expectation": "t",
-    "context": {},
-    "description": "t evals to itself"
-  },
+
   {
     "expression": [["lambda", ["x"], "x"], ["quote", "a"]],
     "expectation": "a",
