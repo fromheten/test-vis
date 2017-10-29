@@ -1,5 +1,5 @@
 const tests = require("../test.json")
-const { map, assoc } = require("ramda")
+const { map, assoc, equals } = require("ramda")
 const result = require("../lib/result")
 
 function main() {
