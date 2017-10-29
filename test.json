@@ -36,16 +36,16 @@
     "description": "Equality, liberty and brotherhood!"
   },
   {
-    "expression": ["head", ["quote", "a"]],
+    "expression": ["first", ["quote", "a"]],
     "expectation": "a",
     "context": {},
-    "description": "Head - aka car, or first"
+    "description": "First - aka car, or head"
   },
   {
-    "expression": ["tail", ["quote", ["a", "b", "c"]]],
+    "expression": ["rest", ["quote", ["a", "b", "c"]]],
     "expectation": ["b", "c"],
     "context": {},
-    "description": "tail, aka rest or cdr"
+    "description": "rest, aka tail or cdr"
   },
 
   {
@@ -57,7 +57,7 @@
   {
     "expression": [
       "if",
-      ["head", ["tail", ["quote", ["f", "t"]]]],
+      ["first", ["rest", ["quote", ["f", "t"]]]],
       ["quote", "I expect this"],
       ["quote", "nej!"]
     ],
