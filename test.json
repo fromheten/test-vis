@@ -82,7 +82,6 @@
     "context": {},
     "description": "No one speaks truth only"
   },
-
   {
     "expression": [["lambda", ["x"], "x"], ["quote", "a"]],
     "expectation": "a",
@@ -106,5 +105,15 @@
     },
     "expectation": "a",
     "description": "Context works"
+  },
+  {
+    "expression": [
+      ["lambda", ["x", "f"], ["f", "x"]],
+      ["quote", "a"],
+      ["lambda", ["y"], "y"]
+    ],
+    "expectation": "a",
+    "description": "Higher order functions",
+    "context": {}
   }
 ]
