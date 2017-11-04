@@ -1,4 +1,4 @@
-const tests = require("../test.json")
+const tests = require("../tests/eval-tests.json")
 const result = require("../lib/result")
 const html = require("../lib/html")
 const { map, assoc } = require("ramda")

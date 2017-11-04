@@ -106,14 +106,35 @@
     "expectation": "a",
     "description": "Context works"
   },
+
   {
     "expression": [
-      ["lambda", ["x", "f"], ["f", "x"]],
+      ["lambda", ["x", "g"], ["g", "x"]],
       ["quote", "a"],
       ["lambda", ["y"], "y"]
     ],
     "expectation": "a",
-    "description": "Higher order functions",
+    "description": "Higher order gunctions",
     "context": {}
+  },
+  {
+    "expression": [["Get identity"], ["quote", "a"]],
+    "expectation": "a",
+    "context": {
+      "Get identity": ["lambda", [], ["lambda", ["x"], "x"]]
+    },
+    "description": "Calling a function that is returned by another function"
+  },
+  {
+    "expression": [
+      "id",
+      [
+        "quote",
+        "Thank you, Socrates, Plato, Alan Kay, Joe Armstrong, John McCarthy & Paul Graham. A point of view is worth 80 IQ points. "
+      ]
+    ],
+    "expectation": "plato:0:K15fdTwF0lDGzG5rM4lx3lLKCzy1+QTtyeOwTUd+3vY=",
+    "context": {},
+    "description": "Get the identity of an expression"
   }
 ]

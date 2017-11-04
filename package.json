@@ -9,6 +9,7 @@
         "html-open": "yarn run html && open target/test-output.html"
     },
     "dependencies": {
+        "keccak": "^1.3.0",
         "ramda": "^0.25.0"
     }
 }
