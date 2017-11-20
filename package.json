@@ -1,15 +1,18 @@
 {
-    "name": "test-vis",
-    "version": "1.0.0",
-    "main": "index.js",
-    "license": "GNU GPL v3",
-    "scripts": {
-        "start": "node ./src/plato-test.js",
-        "html": "node ./src/html-output.js > target/test-output.html",
-        "html-open": "yarn run html && open target/test-output.html"
-    },
-    "dependencies": {
-        "keccak": "^1.3.0",
-        "ramda": "^0.25.0"
-    }
+  "name": "test-vis",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "GNU GPL v3",
+  "scripts": {
+    "start": "node ./src/plato-test.js",
+    "html": "node ./src/html-output.js > target/test-output.html",
+    "html-open": "yarn run html && open target/test-output.html",
+    "test": "tape test/js/**/*.js "
+  },
+  "dependencies": {
+    "keccak": "^1.3.0",
+    "ramda": "^0.25.0",
+    "tap-dot": "^1.0.5",
+    "tape": "^4.8.0"
+  }
 }
