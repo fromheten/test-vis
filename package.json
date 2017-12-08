@@ -4,12 +4,13 @@
   "main": "index.js",
   "license": "GNU GPL v3",
   "scripts": {
-    "start": "node ./src/plato-test.js",
-    "html": "node ./src/html-output.js > target/test-output.html",
+    "start": "flow-node ./src/plato-test.js",
+    "html": "flow-node ./src/html-output.js > target/test-output.html",
     "html-open": "yarn run html && open target/test-output.html",
-    "test": "tape test/js/**/*.js "
+    "test": "flow-node test/js/index.js"
   },
   "dependencies": {
+    "flow-remove-types": "^1.2.3",
     "keccak": "^1.3.0",
     "ramda": "^0.25.0",
     "tap-dot": "^1.0.5",
