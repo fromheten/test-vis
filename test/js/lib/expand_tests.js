@@ -59,7 +59,8 @@ test('finding plato expressions in a tree', t => {
   t.end()
 })
 
-const memoryGetter = function(platoId) {
+const testLookerUpper = function(platoId: string) {
+  console.assert(is(String)(platoId), 'platoId must be a string')
   const testMemory = {
     'plato:0:9uWrYPLrMNyx2i4BBPKXz79RnKqruqzSapwE5IE+apc=':
       '["lambda",["x"],["cons","x","x"]]',
@@ -78,7 +79,7 @@ const memoryGetter = function(platoId) {
 
 test('expanding an expression with no plato calls returns like identity', t => {
   const testExpression = ['cons', ['quote', 'a'], ['quote', 'b']]
-  expand(testExpression, memoryGetter)
+  expand(testExpression, testLookerUpper)
     .then(expression => t.deepLooseEqual(testExpression, expression))
     .catch(x => t.fail('fail:', x))
   t.end()
@@ -87,11 +88,63 @@ test('expanding an expression with no plato calls returns like identity', t => {
 test('Expanding a single ID', t => {
   expand(
     ['plato', 'plato:0:Z0Yqlgtpmiw9ABAGUYmmbeFzrwx+snEN8QYKwY0NMcE='],
-    memoryGetter
+    testLookerUpper
   )
-    .then(expression =>
+    .then(expression => {
       t.deepLooseEqual(expression, ['cons', 'Computing', 'rocks!'])
-    )
-    .catch(err => t.fail(err))
-  t.end()
+      t.end()
+    })
+    .catch(err => {
+      t.fail(err)
+      t.end()
+    })
+})
+
+test('Expanding a plato expression in a tree', t => {
+  expand(
+    [
+      'cons',
+      'Alan Kay said: ',
+      ['plato', 'plato:0:ZZvkezRIoAMIXSBCkqa8P0QsAjSjk0ma1L3aI8+/YwM=']
+    ],
+    testLookerUpper
+  )
+    .then(expression => {
+      t.deepLooseEqual(expression, [
+        'cons',
+        'Alan Kay said: ',
+        ['quote', 'A point of view is worth 80 IQ points']
+      ])
+      t.end()
+    })
+    .catch(error => {
+      t.fail(error)
+      t.end()
+    })
+})
+
+test('expanding multiple plato expressions in a tree', t => {
+  expand(
+    [
+      'cons',
+      [
+        'quote',
+        ['plato', 'plato:0:ZZvkezRIoAMIXSBCkqa8P0QsAjSjk0ma1L3aI8+/YwM=']
+      ],
+      ['plato', 'plato:0:ZZvkezRIoAMIXSBCkqa8P0QsAjSjk0ma1L3aI8+/YwM=']
+    ],
+    testLookerUpper
+  )
+    .then(expression => {
+      t.deepLooseEqual(expression, [
+        'cons',
+        ['quote', ['quote', 'A point of view is worth 80 IQ points']],
+        ['quote', 'A point of view is worth 80 IQ points']
+      ])
+      t.end()
+    })
+    .catch(error => {
+      t.fail(error)
+      t.end()
+    })
 })
