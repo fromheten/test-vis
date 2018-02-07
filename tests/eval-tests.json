@@ -18,6 +18,12 @@
     "description": "Predicate for symbols"
   },
   {
+    "expression": ["symbol?", ["quote", []]],
+    "expectation": "f",
+    "context": {},
+    "description": "hmmm"
+  },
+  {
     "expression": ["equals?", ["quote", "yeps"], ["quote", "nope"]],
     "expectation": "f",
     "context": {},
